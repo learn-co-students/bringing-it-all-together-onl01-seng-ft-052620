@@ -47,6 +47,15 @@ class Dog
         new_dog
       end 
 
+      def self.find_by_id(id)
+        sql = <<-SQL 
+        SELECT ALL FROM dogs 
+        WHERE id = ?
+        LIMIT 1
+        SQL
+        DB[:conn].execute(sql, id)
+      end 
+
 end 
 
 
